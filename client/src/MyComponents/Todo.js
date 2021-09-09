@@ -6,7 +6,7 @@ export default function Todo(props) {
   const { id, name } = props.item;
   return (
     <>
-      <Card bg="info" text="white" style={{ width: "18rem" }}>
+      <Card bg="info" text="white">
         <Card.Header>{id}</Card.Header>
         <Card.Body>
           <Card.Title>{name}</Card.Title>
@@ -16,7 +16,7 @@ export default function Todo(props) {
             onClick={() => props.editItem(id)}
           >
             edit
-          </Button>
+          </Button>{" "}
           <Button
             variant="primary"
             size="sm"

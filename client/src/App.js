@@ -8,9 +8,9 @@ import Todo from "./MyComponents/Todo";
 function App() {
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
       <Todos />
-      <Footer />
+      {/* <Footer /> */}
     </>
     // <div className="App">
     //   <header className="App-header">

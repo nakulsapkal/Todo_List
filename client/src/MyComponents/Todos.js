@@ -1,5 +1,9 @@
 import React, { useEffect, useState } from "react";
 import Todo from "./Todo";
+import Card from "react-bootstrap/Card";
+import ListGroup from "react-bootstrap/ListGroup";
+import Button from "react-bootstrap/Button";
+import "../App.css";
 
 const getLocalItems = () => {
   let list = localStorage.getItem("lists");
@@ -37,7 +41,7 @@ export default function Todos() {
       setIsEditItem(null);
     } else {
       const allInputData = {
-        id: new Date().getTime().toString(),
+        id: new Date().toISOString(),
         name: inputData,
       };
       setItems([...items, allInputData]);
@@ -69,30 +73,37 @@ export default function Todos() {
   }, [items]);
 
   return (
-    <>
-      <div>
+    <div className="App">
+      <div className="HeaderInput">
+        <h2>Todo List</h2>
         <input
           type="text"
           value={inputData}
           placeholder="Add item.."
           onChange={(e) => setInputData(e.target.value)}
-        />
+        />{" "}
         {toogleSubmit ? (
-          <button onClick={addItem}>Add Item</button>
+          <Button variant="primary" size="sm" onClick={addItem}>
+            Add Item
+          </Button>
         ) : (
-          <button onClick={addItem}>Update Item</button>
+          <Button variant="primary" size="sm" onClick={addItem}>
+            Update Item
+          </Button>
         )}
       </div>
-      <div>
-        {items.map((item) => {
-          return (
-            <>
-              <Todo item={item} editItem={editItem} deleteItem={deleteItem} />
-              <br />
-            </>
-          );
-        })}
-      </div>
-    </>
+      <Card bg="info" text="white" style={{ width: "18rem" }} className="mb-2">
+        <ListGroup variant="flush">
+          {items.map((item) => {
+            return (
+              <ListGroup.Item>
+                <Todo item={item} editItem={editItem} deleteItem={deleteItem} />
+                <br />
+              </ListGroup.Item>
+            );
+          })}
+        </ListGroup>
+      </Card>
+    </div>
   );
 }
