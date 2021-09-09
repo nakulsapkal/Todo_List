@@ -4,6 +4,7 @@ import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
 import Button from "react-bootstrap/Button";
 import "../App.css";
+import { FaBeer } from "react-icons/fa";
 
 const getLocalItems = () => {
   let list = localStorage.getItem("lists");
@@ -75,7 +76,10 @@ export default function Todos() {
   return (
     <div className="App">
       <div className="HeaderInput">
-        <h2>Todo List</h2>
+        <h2>
+          Todo List
+          <figcaption>Add Your List Here ✌</figcaption>{" "}
+        </h2>
         <input
           type="text"
           value={inputData}
